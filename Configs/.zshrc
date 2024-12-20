@@ -1,12 +1,10 @@
 # Oh-my-zsh installation path
 ZSH=/usr/share/oh-my-zsh/
 
-# Powerlevel10k theme path
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# List of plugins used
 plugins=()
 source $ZSH/oh-my-zsh.sh
+
+eval "$(starship init zsh)"
 
 # In case a command is not found, try to find the package that has it
 function command_not_found_handler {
@@ -57,10 +55,16 @@ function in {
     fi
 }
 
+function cpconfig() {
+    cp ~/.config/hypr/hyprland.conf ~/.config/hypr/keybindings.conf ~/.config/hypr/userprefs.conf ~/hyprdots/Configs/.config/hypr/
+    cp ~/.config/kitty/userprefs.conf ~/hyprdots/Configs/.config/kitty/
+    cp ~/.config/hyprpanel/config.json ~/hyprdots/Configs/.config/hyprpanel/
+} 
+
 # Helpful aliases
-alias c='clear' # clear terminal
-alias l='eza -lh --icons=auto' # long list
-alias ls='eza -1 --icons=auto' # short list
+alias  c='clear' # clear terminal
+alias  l='eza -lha  --icons=auto --sort=name --group-directories-first --no-permissions --no-user' # long list
+alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
@@ -81,9 +85,51 @@ alias .5='cd ../../../../..'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
+alias ssh='kitten ssh'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias r='source ~/.zshrc'
+alias x='clear'
+alias config='cd ~/.config && vim .'
+alias zshconfig='vim ~/.zshrc'
+alias q='exit'
+alias t='tmux'
+alias repos='cd ~/Repos'
+alias undogit='git reset --soft HEAD~1'
+alias cleantsconfig="sed -i -r '/^[ \t]*\//d; /^[[:space:]]*$/d; s/\/\*(.*?)\*\///g; s/[[:blank:]]+$//' tsconfig.json"
 
-# Display Pokemon
-pokemon-colorscripts --no-title -r 1,3,6
+alias a='git add .'
+alias s='git status -s'
+alias c='git commit'
+alias g='git log --oneline --graph --decorate'
+alias gl='git log --oneline --decorate --reverse'
+
+alias ds='systemctl start docker'
+alias dkill='sudo docker kill $(sudo docker ps -q)'
+alias ld='sudo lazydocker'
+alias mac='ssh $MAC_HOST'
+alias pip='pyenv exec pip install'
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+
+export MAC_HOST='jasper.concepcion@PHPMACTHHPX4QJT'
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+export EDITOR='nvim'
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+
+export PATH="$PATH:/home/manok/.local/share/bob/nvim-bin"
+export BAT_THEME='catpuccin_latte'
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+

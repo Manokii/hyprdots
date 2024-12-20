@@ -41,23 +41,6 @@ EOF
     exit 1
 }
 
-notify_vol() {
-    angle=$(( (($vol + 2) / 5) * 5 ))
-    ico="${icodir}/vol-${angle}.svg"
-    bar=$(seq -s "." $(($vol / 15)) | sed 's/[0-9]//g')
-    notify-send -a "t2" -r 91190 -t 800 -i "${ico}" "${vol}${bar}" "${nsink}"
-}
-
-notify_mute() {
-    mute=$(pamixer "${srce}" --get-mute | cat)
-    [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
-    if [ "${mute}" == "true" ]; then
-        notify-send -a "t2" -r 91190 -t 800 -i "${icodir}/muted-${dvce}.svg" "muted" "${nsink}"
-    else
-        notify-send -a "t2" -r 91190 -t 800 -i "${icodir}/unmuted-${dvce}.svg" "unmuted" "${nsink}"
-    fi
-}
-
 change_volume() {
     local action=$1
     local step=$2
@@ -79,7 +62,6 @@ change_volume() {
             ;;
     esac
     
-    notify_vol
 }
 
 toggle_mute() {
@@ -90,7 +72,6 @@ toggle_mute() {
         "pamixer") 
             $use_swayosd && swayosd-client "${mode}" mute-toggle && exit 0
             pamixer $srce -t
-            notify_mute
             ;;
         "playerctl")
             local volume_file="/tmp/$(basename "$0")_last_volume_${srce:-all}"
@@ -105,7 +86,6 @@ toggle_mute() {
                     playerctl --player="$srce" volume 0.5  # Default to 50% if no saved volume
                 fi
             fi
-            notify_mute
             ;;
     esac
 }
