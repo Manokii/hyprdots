@@ -15,7 +15,7 @@
   "theme.bar.buttons.y_margins": "0em",
   "theme.bar.buttons.radius": "0.3em",
   "scalingPriority": "hyprland",
-  "theme.osd.active_monitor": true,
+  "theme.osd.active_monitor": false,
   "theme.osd.location": "top right",
   "theme.bar.buttons.background_opacity": 100,
   "menus.clock.weather.enabled": true,
@@ -26,6 +26,7 @@
   "bar.layouts": {
     "0": {
       "left": [
+        "workspaces",
         "windowtitle"
       ],
       "middle": [],
@@ -53,6 +54,7 @@
     },
     "2": {
       "left": [
+        "workspaces",
         "windowtitle"
       ],
       "middle": [],
@@ -67,7 +69,7 @@
   "theme.osd.orientation": "horizontal",
   "theme.osd.margins": "20px 20px 0px 0px",
   "theme.bar.buttons.spacing": "0.25em",
-  "bar.scrollSpeed": 5,
+  "bar.scrollSpeed": 18,
   "theme.bar.buttons.padding_y": "0.2rem",
   "theme.bar.background": "#191724",
   "theme.bar.buttons.media.icon": "#c4a7e7",
@@ -455,5 +457,16 @@
   "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Youtube Music",
   "bar.customModules.ram.labelType": "used/total",
   "bar.customModules.storage.labelType": "used/total",
-  "notifications.timeout": 10000
+  "notifications.timeout": 10000,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "theme.bar.buttons.workspaces.smartHighlight": false,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "bar.workspaces.applicationIconEmptyWorkspace": "",
+  "bar.workspaces.monitorSpecific": true,
+  "bar.workspaces.workspaces": 4,
+  "bar.workspaces.scroll_speed": 0,
+  "bar.workspaces.hideUnoccupied": true,
+  "bar.workspaces.workspaceMask": false
 }
