@@ -109,6 +109,8 @@ alias ld='sudo lazydocker'
 alias mac='ssh $MAC_HOST'
 alias pip='pyenv exec pip install'
 
+bindkey "^H" backward-delete-word
+
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
