@@ -104,6 +104,7 @@ docker-compose                                         # Docker Compose
 google-chrome                                          # Browser
 1password                                              # Password Manager
 1password-cli                                          # 1Password CLI
+discord-canary                                         # Discord canary has new screen sharing feature
 
 # --------------------------------------------------- // Fonts
 noto-fonts-cjk                                         # Default font fallback for asian characters
@@ -138,7 +139,7 @@ python-gpustat
 python-pywal
 power-profiles-daemon
 btop
-gpu-screen-recorder|asg-hyprpanel-git
+gpu-screen-recorder|asg-hyprpanel-git                 # Seems to be required by discord-canary to share screen
 hypridle
 hyprsunset
 matugen-bin
